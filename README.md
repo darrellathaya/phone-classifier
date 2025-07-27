@@ -1,142 +1,129 @@
-<a id="readme-top"></a>
+# Phone Price Predictor
 
-<!-- PROJECT SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![Unlicense License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+## Project Description
 
-<!-- ABOUT THE PROJECT -->
-## 📦 About The Project
+**Phone Price Predictor** is a machine learning pipeline project that classifies mobile phones into different price categories and predicts exact price estimates based on hardware specifications. This project implements an **end-to-end MLOps workflow** using version-controlled data, GitHub Actions for automation, and FastAPI for deployment.
 
-This project is a simple **machine learning pipeline** that trains a model to predict the price range of mobile phones using structured input features. It demonstrates:
+The system demonstrates how **automated training**, **versioned model storage**, and **CI/CD integration** can work together to keep a machine learning application reliable, testable, and production-ready.
 
-- How to automate ML training using GitHub Actions
-- Committing trained models directly to the repo
-- Tracking performance metrics like accuracy and regression error
-- Modular ML code structure with versioned artifacts
+It includes a fully working web app that allows users to input phone specs and receive both a classification label and a regression-based price prediction.
 
-You can trigger retraining by updating the dataset (`data/raw/train.csv`) or running the GitHub Actions workflow manually.
+  
+## Features
+
+- Model training and evaluation with **scikit-learn**  
+- Live model serving with **FastAPI**  
+- CI/CD via **GitHub Actions** triggered on data changes  
+- Regression and classification support  
+- Model versioning and metrics tracking  
+- Docker-compatible and ready for deployment  
 
 
-<!-- BUILT WITH -->
-## 🛠️ Built With
+## Technologies Used
 
-* [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-* [scikit-learn](https://scikit-learn.org/)
-* [GitHub Actions](https://github.com/features/actions)
-
-
-<!-- GETTING STARTED -->
-## 🚀 Getting Started
-
-These instructions will help you set up the project locally and run it manually. GitHub Actions will automatically retrain the model whenever you update `train.csv`.
+- **Python** — Core language for ML pipeline  
+- **scikit-learn** — Machine learning models  
+- **FastAPI** — REST API interface for predictions  
+- **GitHub Actions** — CI/CD automation for model training  
+- **Docker** — Optional containerized deployment  
 
 
-<!-- INSTALLATION -->
-### 📦 Installation
+## Getting Started
 
-1. Clone the repo
-   ```sh
+### Prerequisites
+
+- Python 3.8+  
+- Git  
+- (Optional) Docker  
+- (Optional) Azure CLI (for deployment)
+
+### Installation
+
+1. **Clone the Repository**
+   ```bash
    git clone https://github.com/darrellathaya/phone-predictor.git
    cd phone-predictor
+   ```
 
-2. Install Azure CLI
-   a. Windows
-      ```sh
-      Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process .\AzureCLI.msi
-      ```
-   
-   b. Linux
-      ```sh
-      curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-      ```
-   
-3. Install missing dependencies
-   ```sh
+2. **Install Dependencies**
+   ```bash
    pip install -r requirements.txt
-   
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-1. Running the web app locally
-   ```sh
-   uvicorn app.main:app --reload
    ```
 
-2. Train the model locally
-   ```sh
-   python src/model.py
+3. **(Optional) Install Azure CLI**
+
+   **Windows**
+   ```powershell
+   Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi
+   Start-Process .\AzureCLI.msi
    ```
 
-3. Running the CI/CD
-   ```sh
-   a. Add new data into train.csv
+   **Linux**
+   ```bash
+   curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+   ```
 
-   b. Push the changes into your Github Repository
 
+## Usage Guide
 
-<!-- DIRECTORY -->
-## Project Directory
-```sh
-.
-github
-  workflows
-    ci.yml
-    cd.yml
-    azure-static-web-apps-icy-grass-0d9960500.yml
-webapp
-  app
-    _pycache_
-      main.cpython-312.pyc
-      main.cpython-313.pyc
-    main.py
-  data
-    raw
-      train.csv
-  models
-    accuracy.txt
-    chipset_encoder.pkl
-    meta.json
-    price_range_model.pkl
-    price_regression_model.pkl
-    regression_metrics.txt
-  src
-    train.py
-    model.py
-  templates
-    index.html
-  Dockerfile
-  requirements.txt
+### Train the Model Manually
+```bash
+python src/model.py
 ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Start the Web App
+```bash
+uvicorn app.main:app --reload
+```
+
+Then visit `http://localhost:8000` in your browser.
+
+### Trigger CI/CD on GitHub
+- Update `data/raw/train.csv` and push to the repository.
+- GitHub Actions will automatically:
+  - Retrain models
+  - Evaluate performance
+  - Save results to the `models/` directory
 
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/darrellathaya/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/darrellathaya/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/darrellathaya/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/darrellathaya/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/darrellathaya/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/darrellathaya/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/darrellathaya
-[product-screenshot]: images/screenshot.png
+## Project Structure
 
-[Java.io]: https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white
-[Java-url]: https://www.java.com/
+```
+phone-predictor/
+├── .github/
+│   └── workflows/                  # CI/CD pipelines
+│       ├── ci.yml
+│       ├── cd.yml
+│       └── azure-static-web-apps.yml
+│
+├── app/                            # FastAPI app
+│   ├── main.py
+│   └── templates/
+│       └── index.html
+│
+├── data/
+│   └── raw/
+│       └── train.csv              # Training dataset
+│
+├── models/                         # Saved models and performance logs
+│   ├── price_range_model.pkl
+│   ├── price_regression_model.pkl
+│   ├── chipset_encoder.pkl
+│   ├── meta.json
+│   ├── accuracy.txt
+│   └── regression_metrics.txt
+│
+├── src/
+│   ├── train.py                   # Modular training logic
+│   └── model.py                   # Main training script
+│
+├── requirements.txt
+├── Dockerfile
+└── README.md
+```
 
-[MsgPack.io]: https://img.shields.io/badge/MessagePack-000000?style=for-the-badge&logo=data&logoColor=white
-[MsgPack-url]: https://msgpack.org/
+---
 
-[Jackson.io]: https://img.shields.io/badge/Jackson-2F3134?style=for-the-badge&logo=code&logoColor=white
-[Jackson-url]: https://github.com/FasterXML/jackson
+## License
+
+This project is licensed under the MIT License.

@@ -1,5 +1,12 @@
 # Phone Price Predictor
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Railway](https://img.shields.io/badge/Railway-000000?style=for-the-badge&logo=railway&logoColor=white)
+![SonarQube](https://img.shields.io/badge/SonarQube-4E9BCD?style=for-the-badge&logo=sonarqube&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white)
+
+
 ## Project Description
 
 **Phone Price Predictor** is a machine learning pipeline project that classifies mobile phones into different price categories and predicts exact price estimates based on hardware specifications. This project implements an **end-to-end MLOps workflow** using version-controlled data, GitHub Actions for automation, and FastAPI for deployment.
